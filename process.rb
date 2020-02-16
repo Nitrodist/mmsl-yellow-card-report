@@ -47,4 +47,4 @@ csv_data.each do |row|
 
 end
 
-puts `cat mmsl_report.sql | psql mmsl`
+puts `cat mmsl_report.sql | tr '\n' ' ' | psql mmsl`

@@ -1,3 +1,5 @@
+\copy (
+
 SELECT i.team_name, 
        concat(i.first_name, ' ', i.last_name) as name,
       infract1_date,
@@ -17,4 +19,4 @@ left outer join (select team_name, first_name, last_name, datetime_of_infraction
 left outer join (select team_name, first_name, last_name, datetime_of_infraction as infract7_date FROM infractions WHERE infraction_series_number = 7) infract7 ON i.team_name = infract7.team_name AND i.first_name = infract7.first_name AND i.last_name = infract7.last_name
 
 GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9
-;
+) to 'output.csv' with csv HEADER;
