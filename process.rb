@@ -30,7 +30,7 @@ end
 Infraction.delete_all
 
 csv_data.each do |row|
-  next if row[' Card'] != 'Yellow Card'
+  next if row[' Card'].strip != 'Yellow Card'
   record = {
     id: Infraction.count + 1,
     last_name: row[' Last Name'].strip,
@@ -47,9 +47,4 @@ csv_data.each do |row|
 
 end
 
-def generate_infraction_series_number
-end
-
-binding.pry
-
-exit 0
+puts `cat mmsl_report.sql | psql mmsl`
