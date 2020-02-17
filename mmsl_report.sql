@@ -3,12 +3,19 @@
 SELECT i.team_name, 
        concat(i.first_name, ' ', i.last_name) as name,
       infract1_date,
+      ' ' as placeholder,
       infract2_date,
+      ' ' as placeholder,
       infract3_date,
+      ' ' as placeholder,
       infract4_date,
+      ' ' as placeholder,
       infract5_date,
+      ' ' as placeholder,
       infract6_date,
-      infract7_date
+      ' ' as placeholder,
+      infract7_date,
+      ' ' as placeholder
 FROM infractions i
 left outer join (select team_name, first_name, last_name, datetime_of_infraction as infract1_date FROM infractions WHERE infraction_series_number = 1) infract1 ON i.team_name = infract1.team_name AND i.first_name = infract1.first_name AND i.last_name = infract1.last_name
 left outer join (select team_name, first_name, last_name, datetime_of_infraction as infract2_date FROM infractions WHERE infraction_series_number = 2) infract2 ON i.team_name = infract2.team_name AND i.first_name = infract2.first_name AND i.last_name = infract2.last_name
@@ -18,5 +25,6 @@ left outer join (select team_name, first_name, last_name, datetime_of_infraction
 left outer join (select team_name, first_name, last_name, datetime_of_infraction as infract6_date FROM infractions WHERE infraction_series_number = 6) infract6 ON i.team_name = infract6.team_name AND i.first_name = infract6.first_name AND i.last_name = infract6.last_name
 left outer join (select team_name, first_name, last_name, datetime_of_infraction as infract7_date FROM infractions WHERE infraction_series_number = 7) infract7 ON i.team_name = infract7.team_name AND i.first_name = infract7.first_name AND i.last_name = infract7.last_name
 
-GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9
+GROUP BY 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+ORDER BY 1, 2
 ) to 'output.csv' with csv HEADER;
