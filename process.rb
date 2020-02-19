@@ -6,7 +6,7 @@ require 'active_record'
 
 ActiveRecord::Base.establish_connection('postgres://localhost/mmsl')
 
-csv_data = CSV.parse(File.read('penalty-report-202002151117.csv'), headers: true)
+csv_data = CSV.parse(File.read(ARGV.first), headers: true)
 
 # require 'sqlite3'
 # db = SQLite3::Database.new(':memory:')

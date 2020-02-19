@@ -1,17 +1,3 @@
--- \d infractions
---                               Table "public.infractions"
---           Column          |           Type           | Collation | Nullable | Default
--- --------------------------+--------------------------+-----------+----------+---------
---  id                       | character varying(255)   |           | not null |
---  team_name                | character varying(255)   |           |          |
---  first_name               | character varying(255)   |           |          |
---  last_name                | character varying(255)   |           |          |
---  datetime_of_infraction   | timestamp with time zone |           |          |
---  player_number            | integer                  |           |          |
---  infraction_code          | character varying(255)   |           |          |
---  infraction_series_number | integer                  |           |          |
--- Indexes:
---     "infractions_pkey" PRIMARY KEY, btree (id)
 \copy (
 
 SELECT i.team_name, 
