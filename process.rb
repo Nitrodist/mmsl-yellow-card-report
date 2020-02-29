@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
 require 'csv'
 require 'pry'
 require 'active_record'
@@ -47,4 +48,9 @@ csv_data.each do |row|
 
 end
 
-puts `cat mmsl_report.sql | tr '\n' ' ' | psql mmsl`
+
+filename = "finished-#{ARGV.first}"
+
+`cat mmsl_report.sql | tr '\n' ' ' | psql mmsl`
+
+FileUtils.mv('output.csv', filename)
